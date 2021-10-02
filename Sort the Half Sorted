@@ -1,0 +1,86 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+ // } Driver Code Ends
+
+class Solution
+{
+    public:
+        void sortHalves (int arr[], int n)
+        {
+            // your code here
+            vector<int>v;
+            int c = -1;
+            for(int i=0;i+1<n;i++)
+            {
+                if(arr[i]>arr[i+1])
+                  c = i;
+            }
+            
+            if(c==-1)
+            return;
+            
+            int i = 0;
+            int j = c+1;
+            
+            while(i<=c && j<=n-1)
+            {
+                if(arr[i]<arr[j])
+                {
+                    v.push_back(arr[i]);
+                    i++;
+                }
+                else
+                {
+                    v.push_back(arr[j]);
+                    j++;
+                }
+            }
+            if(i>c)
+            {
+                while(j<=n-1)
+                {
+                    v.push_back(arr[j]);
+                    j++;
+                }
+            }
+            else
+            {
+                while(i<=c)
+                {
+                    v.push_back(arr[i]);
+                    i++;
+                }
+            }
+            
+            for(int j=0;j<n;j++)
+            {
+                arr[j] = v[j];
+            }
+        }
+};
+
+// { Driver Code Starts.
+
+int main ()
+{
+    int t; cin >> t;
+    while (t--)
+    {
+        int n; cin >> n;
+		int arr[n];
+
+		for (int i = 0; i < n; ++i)
+			cin >> arr[i];
+        
+        Solution ob;
+        
+		ob.sortHalves (arr, n);
+		for (int i = 0; i < n; ++i)
+			cout << arr[i] << " ";
+		cout << endl;
+    }
+}
+
+// Contributed By: Pranay Bansal  // } Driver Code Ends
