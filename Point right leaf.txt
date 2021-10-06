@@ -1,0 +1,11 @@
+void inOrderTraversal(Node root, Node previous){
+   if(root!=null){
+      inOrderTraversal(root.left, previous);
+      if(root.left==null && root.right==null){
+         if(previous!=null)
+            previous.right=root;
+         previous=root;
+      }
+      inOrderTraversal(root.right, previous);
+   }
+}
